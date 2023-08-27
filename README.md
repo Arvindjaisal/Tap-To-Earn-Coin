@@ -1,2 +1,2 @@
-This is a my first git repository 
-Auther by - Arvind Jaisal 
+This is a My First Git Repository 
+Auther - Arvind Jaisal 

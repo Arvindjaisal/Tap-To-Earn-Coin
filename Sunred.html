@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap to Earn Coin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('your-lion-image-url.jpg'); /* Replace with your lion image URL */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        .button-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background: #800000; /* Dark Maroon color */
+            border-radius: 50%;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-circle:hover {
+            transform: scale(1.1);
+        }
+
+        .button-circle button {
+            padding: 0;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: transparent;
+            color: black;
+            border: none;
+        }
+
+    </style>
+    <script>
+        let coins = 0;
+        function earnCoin() {
+            coins += 1;
+            document.getElementById('coin-count').innerText = coins;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tap to Earn Coin</h1>
+        <p>Coins: <span id="coin-count">0</span></p>
+        <div class="button-circle">
+            <button onclick="earnCoin()">Tap to Earn</button>
+        </div> 
+    </div>
+</body>
+</html>

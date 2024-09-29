@@ -1,0 +1,90 @@
+<html lang="en">
+ <head></head>
+ <body>
+  !DOCTYPE html&gt; 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Tap to Earn</title> 
+  <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .tap-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .tap-button:active {
+            background-color: #218838;
+        }
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: black url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><circle fill="white" cx="2" cy="2" r="2"/><circle fill="white" cx="8" cy="8" r="2"/><circle fill="white" cx="16" cy="16" r="2"/><circle fill="white" cx="24" cy="24" r="2"/><circle fill="white" cx="32" cy="32" r="2"/><circle fill="white" cx="40" cy="40" r="2"/></svg>') repeat top left;
+            z-index: -1;
+            opacity: 0.8;
+        }
+    </style> 
+  <div class="stars"></div> 
+  <div class="container"> 
+   <h1>Tap to Earn Coins!</h1> 
+   <p id="coin-count">Coins: 0</p> <button class="tap-button" onclick="earnCoins()">Tap Me!</button> 
+   <div id="referral-section" style="margin-top: 20px;"> 
+    <p>Invite others and earn 50,000 coins!</p> 
+    <input type="text" id="referral-code" placeholder="Enter referral code" style="padding: 10px; font-size: 16px; width: 60%;"> <button onclick="useReferral()" style="padding: 10px 20px; font-size: 16px;">Use Code</button> 
+   </div> 
+   <div id="top-inviters" style="margin-top: 20px;"> 
+    <h2>Top 100 Inviters</h2> 
+    <ol id="inviter-list"></ol> 
+   </div> 
+  </div> 
+  <script>
+        let coins = 0;
+        let referrals = [];
+        
+        function earnCoins() {
+            coins += 1;
+            document.getElementById('coin-count').innerText = 'Coins: ' + coins;
+        }
+
+        function useReferral() {
+            const code = document.getElementById('referral-code').value;
+            if (code && !referrals.includes(code)) {
+                referrals.push(code);
+                coins += 50000;
+                document.getElementById('coin-count').innerText = 'Coins: ' + coins;
+                updateTopInviters();
+            } else {
+                alert('Invalid or already used referral code.');
+            }
+        }
+
+        function updateTopInviters() {
+            const inviterList = document.getElementById('inviter-list');
+            inviterList.innerHTML = '';
+            referrals.forEach((referral, index) => {
+                if (index < 100) {
+                    const listItem = document.createElement('li');
+                    listItem.innerText = `Referral Code: ${referral}`;
+                    inviterList.appendChild(listItem);
+                }
+            });
+        }
+    </script> 
+ </body>
+</html>
